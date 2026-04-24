@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/io/elementary/shortcut-overlay">
     <file alias="application.css" compressed="true">application.css</file>
+    <file alias="sourceos/shortcut-overlay.interaction-surface.json" compressed="true">shortcut-overlay.interaction-surface.json</file>
   </gresource>
 </gresources>
