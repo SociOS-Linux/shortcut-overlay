@@ -39,6 +39,21 @@ public class ShortcutOverlay.MainWindow : Gtk.Window {
         headerbar.set_show_close_button (true);
         headerbar.pack_end (settings_button);
 
+        var binding = InteractionBinding.load_default ();
+        if (binding != null && binding.name != null && binding.name != "") {
+            headerbar.has_subtitle = true;
+            headerbar.subtitle = binding.name;
+
+            var tooltip_lines = _("Keyboard Settings…");
+            if (binding.description != null && binding.description != "") {
+                tooltip_lines = "%s\n%s".printf (tooltip_lines, binding.description);
+            }
+            if (binding.command_bus_ref != null && binding.command_bus_ref != "") {
+                tooltip_lines = "%s\n%s".printf (tooltip_lines, binding.command_bus_ref);
+            }
+            settings_button.tooltip_text = tooltip_lines;
+        }
+
         unowned Gtk.StyleContext headerbar_style_context = headerbar.get_style_context ();
         headerbar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
         headerbar_style_context.add_class ("default-decoration");
