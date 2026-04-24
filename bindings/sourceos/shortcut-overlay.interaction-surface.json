@@ -1,0 +1,42 @@
+{
+  "id": "urn:srcos:interaction-surface:shortcut-overlay",
+  "name": "Shortcut Overlay Surface",
+  "description": "OS-wide shortcut discovery overlay that exposes host and window-manager keyboard shortcuts while preserving host-native ownership.",
+  "surfaceType": "shortcut-overlay",
+  "platform": "socios-linux",
+  "modalities": [
+    "keyboard",
+    "hybrid"
+  ],
+  "focusPolicy": {
+    "owner": "local-surface",
+    "escapeBehavior": "local-only",
+    "tabBehavior": "focus-cycle",
+    "multilineBoundaryHistory": false,
+    "arrowKeyPolicy": "local-region-navigation"
+  },
+  "hostBoundaryPolicy": {
+    "nativeShortcutPolicy": "preserve",
+    "passThroughInput": false,
+    "protectedNamespaces": [
+      "host.window-manager",
+      "accessibility"
+    ]
+  },
+  "commandBinding": {
+    "defaultInterpretation": "local-action",
+    "scopePrefix": "/",
+    "explicitCommandPrefix": ">",
+    "commandBusRef": "urn:srcos:command-bus:emvi",
+    "launcherRef": null,
+    "shortcutOverlayRef": "urn:srcos:interaction-surface:shortcut-overlay",
+    "keymapProfileRef": "urn:srcos:keymap-profile:mac-linux-primary"
+  },
+  "evidenceRefs": [],
+  "tags": [
+    "shortcut-overlay",
+    "keyboard-nav",
+    "host-boundary",
+    "sourceos-binding"
+  ]
+}

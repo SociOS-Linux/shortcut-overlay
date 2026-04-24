@@ -9,7 +9,7 @@ i18n = import('i18n')
 
 asresources = gnome.compile_resources(
     'as-resources', 'data/' + meson.project_name() + '.gresource.xml',
-    source_dir: 'data',
+    source_dir: ['data', 'bindings/sourceos'],
     c_name: 'as'
 )
 
@@ -23,6 +23,7 @@ executable(
     'src/Application.vala',
     'src/MainWindow.vala',
     'src/ShortcutLabel.vala',
+    'src/InteractionBinding.vala',
     'src/Views/ShortcutsView.vala',
     asresources,
     dependencies: [
@@ -31,6 +32,7 @@ executable(
         dependency('granite', version: '>= 5.4.0'),
         dependency('gtk+-3.0'),
         dependency('gee-0.8'),
+        dependency('json-glib-1.0'),
         meson.get_compiler('vala').find_library('posix'),
     ],
     install : true
